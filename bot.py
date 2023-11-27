@@ -39,7 +39,14 @@ async def beginning(message: types.Message):
 async def on_task_callback_query(callback: types.CallbackQuery):
     task_id = int(callback.data.replace("task_", ""))
     keyboard = MAPPING[task_id]()
+
+    keyboard.inline_keyboard.append([types.InlineKeyboardButton(text="Назад", callback_data="select_main_menu")])
     await callback.message.edit_text("Выберите один вариант из предложенных", reply_markup=keyboard)
+
+
+@dp.callback_query(F.data.startswith("select_main_menu"))
+async def on_back_main_callback_query(callback: types.CallbackQuery):
+    await callback.message.edit_text("Выберите одну категорию заданий из предложенных", reply_markup=keyboards.initial_keyboard())
 
 
 @dp.callback_query(F.data.startswith("test_"))
@@ -51,7 +58,6 @@ async def on_test_callback_query(callback: types.CallbackQuery):
     if reply["image"] != "None":
         await callback.message.delete()
         await callback.bot.send_photo(
-            parse_mode="HTML",
             caption=reply["text"],
             chat_id=callback.message.chat.id,
             photo=types.FSInputFile(reply["image"]),
@@ -60,7 +66,6 @@ async def on_test_callback_query(callback: types.CallbackQuery):
     else:
         await callback.message.edit_text(
             text=reply["text"],
-            parse_mode="HTML",
             reply_markup=types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="Назад", callback_data=f"return_back_{task_id}_true")]])
         )
 
@@ -71,6 +76,7 @@ async def on_return_back_callback_query(callback: types.CallbackQuery):
     reply = callback.data.split("_")[3]
 
     keyboard = MAPPING[task_id]()
+    keyboard.inline_keyboard.append([types.InlineKeyboardButton(text="Назад", callback_data="select_main_menu")])
     if reply == "true":
         await callback.message.edit_text("Выберите один вариант из предложенных", reply_markup=keyboard)
     else:

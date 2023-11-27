@@ -11,7 +11,7 @@ def first_task():
         [types.InlineKeyboardButton(text="Кодировка, в которой каждый символ кодируется 8 битами", callback_data="test_1_variation_1")],
         [types.InlineKeyboardButton(text="Кодировка, в которой каждый символ кодируется 16 битами", callback_data="test_1_variation_2")],
         [types.InlineKeyboardButton(text="Кодировка, в которой каждый символ кодируется 32 битами", callback_data="test_1_variation_3")],
-        [types.InlineKeyboardButton(text="Разные задачи", callback_data="test_1_variation_3")]
+        [types.InlineKeyboardButton(text="Разные задачи", callback_data="test_1_variation_4")]
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -73,7 +73,8 @@ def eighth_task():
 def ninth_task():
     buttons = [
         [types.InlineKeyboardButton(text="Поиск путей из одного города в другой", callback_data="test_9_variation_1")],
-        [types.InlineKeyboardButton(text="Поиск путей из одного города в другой, проходящих, или не проходящих через определенный пункт", callback_data="test_9_variation_2")]
+        [types.InlineKeyboardButton(text="Поиск путей из одного города в другой, проходящих, или не проходящих через определенный пункт", callback_data="test_9_variation_2")],
+        [types.InlineKeyboardButton(text="Поиск путей из одного города в другой, проходящих, или не проходящих через определенный пункт продолжение", callback_data="test_9_variation_3")]
     ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
@@ -106,10 +107,17 @@ def thirteenth_task():
 
 
 def fourteenth_task():
-    buttons = [[types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_14_variation_1")]]
+    buttons = [
+        [types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_14_variation_1")],
+        [types.InlineKeyboardButton(text="Задания для подготовки продолжение", callback_data="test_14_variation_2")]
+        ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
 def fifteenth_task():
-    buttons = [[types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_15_variation_1")]]
+    buttons = [
+        [types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_15_variation_1")],
+        [types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_15_variation_2")],
+        [types.InlineKeyboardButton(text="Задания для подготовки", callback_data="test_15_variation_3")]
+    ]
     return types.InlineKeyboardMarkup(inline_keyboard=buttons)
